@@ -1,6 +1,6 @@
 <template>
   
-    <div class = "mainWrapper" :class="isMobileDetected ? ( isCollapseOpenLocal ? 'fixWidth' : 'FullWidth') : '' ">
+    <div class = "mainWrapper">
     <div class="menuItemWrapper">
        <div class="menuTitleWrapper">
           <label class="title" v-bind:class="getClass()">

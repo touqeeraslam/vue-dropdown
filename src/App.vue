@@ -1,10 +1,12 @@
 <template>
   <!-- <img alt="Vue logo" src="./assets/logo.png"> -->
   <div class="appContainer">
-      <div  :class = "isCollapseOpen  ? 'w20' : 'w5' ">
+    <!-- class = "isCollapseOpen  ? 'w20' : 'w5'" -->
+      <div  :class="isMobileExist  && isCollapseOpen ? 'w100' : (isMobileExist && !isCollapseOpen ? 'w10' : (!isMobileExist && isCollapseOpen ? 'w20' : 'w5'))">
       <Sidebar  :data="data" :isLoggedIn="isLoggedIn" :isCollapseOpen="isCollapseOpen"  @toggleCollapse="toggleCollapse"  />
       </div>  
-      <div class="main" :class = "isCollapseOpen  ? 'w80' : 'w95' ">
+      <!-- <div class="main" :class = "isCollapseOpen  ? 'w80' : 'w95' "> -->
+        <div class="main" :class="isMobileExist  && isCollapseOpen ? 'dnone' : (isMobileExist && !isCollapseOpen ? 'w90' : (!isMobileExist && isCollapseOpen ? 'w80' : 'w95'))">
         my app
          </div>
     </div>
@@ -12,6 +14,7 @@
 
 <script>
 import Sidebar from './components/sidebar.vue'
+import { isMobile } from 'mobile-device-detect';
 
 export default {
   name: 'App',
@@ -22,7 +25,8 @@ export default {
   { img: "", name: "Document", url: "/document" },
   { img: "", name: "Service availibility", url: "service" }],
   isLoggedIn: true,
-    isCollapseOpen : true,
+  isMobileExist : isMobile,
+    isCollapseOpen :isMobile ? false : true,
             };
         },
   components: {
@@ -44,6 +48,10 @@ export default {
   margin: 0 !important;
 }
 
+.dnone{
+  display: none !important;
+}
+
 .appContainer {
   /* display : inline-flex; */
   display: flex;
@@ -53,8 +61,16 @@ export default {
 width : 20%;
 }
 
+.w90{
+  width : 90%;
+}
+
 .w5{
     width : 5%;
+}
+
+.w100 {
+  width : 100vw;
 }
 
 
