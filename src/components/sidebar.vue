@@ -31,7 +31,7 @@
         </ul>
 
 
-        <div class="logout pl-2">
+        <div class="logout logout-pl-2">
           <a href = "/">
             <span>
               <img class="list-img" src="@/assets/logo.png" alt="logo" />
@@ -95,6 +95,7 @@ export default {
     height: 100vh;
     background-color: #333;
     width : 100%;
+    position: relative
 }
 .menuItemWrapper{
     background: #333;
@@ -190,6 +191,12 @@ export default {
 }
 
 
+.logout{
+  width: '100% !important';
+}
+.logout:hover{
+  background: radial-gradient(black, transparent);
+}
 .logout a {
         text-decoration: none;
     }
@@ -198,11 +205,29 @@ export default {
         line-height: 2; 
         text-decoration: none;
     }
+    .logout a:hover{
+      background: radial-gradient(black, transparent);
+    }
    
 
 .pl-2 {
   padding-left: 2em;
 }
+
+.pl-2 a:hover  {
+  background: radial-gradient(black, transparent);
+}
+
+.logout-pl-2 {
+  padding-left: 2em;
+  width : calc(100% - 2em);
+}
+
+
+
+  
+
+
 
 
 </style>
