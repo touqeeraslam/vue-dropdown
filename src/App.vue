@@ -3,7 +3,7 @@
   <div class="appContainer">
     <!-- class = "isCollapseOpen  ? 'w20' : 'w5'" -->
       <div  :class="isMobileExist  && isCollapseOpen ? 'w100' : (isMobileExist && !isCollapseOpen ? 'w10' : (!isMobileExist && isCollapseOpen ? 'w20' : 'w5'))">
-      <Sidebar  :data="data" :isLoggedIn="isLoggedIn" :isCollapseOpen="isCollapseOpen"  @toggleCollapse="toggleCollapse"  />
+      <Sidebar :path="path" :logout="logout"  :data="data" :isLoggedIn="isLoggedIn" :isCollapseOpen="isCollapseOpen"  @toggleCollapse="toggleCollapse"  />
       </div>  
       <!-- <div class="main" :class = "isCollapseOpen  ? 'w80' : 'w95' "> -->
         <div class="main" :class="isMobileExist  && isCollapseOpen ? 'dnone' : (isMobileExist && !isCollapseOpen ? 'w90' : (!isMobileExist && isCollapseOpen ? 'w80' : 'w95'))">
@@ -23,9 +23,12 @@ export default {
                 data: [
   { img: "", name: "Dashboard", url: "/dashboard" },
   { img: "", name: "Document", url: "/document" },
-  { img: "", name: "Service availibility", url: "service" }],
+  { img: "", name: "Service availibility", url: "/service" }],
   isLoggedIn: true,
+  path: window?.location?.pathname,
   isMobileExist : isMobile,
+  logout :
+  { img: "", name: "LogOut", url: "/" },
     isCollapseOpen :isMobile ? false : true,
             };
         },
@@ -36,6 +39,7 @@ export default {
     toggleCollapse: function (event) {
       // debugger;
       console.log(event)
+     
         this.isCollapseOpen = event;
     }
   }

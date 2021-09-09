@@ -20,8 +20,8 @@
 
 
      <ul class="menuList">
-        <li class="pl-2" v-for="(item, index) in data" v-bind:key="index" >
-             <a :href ="item.url">
+        <li class="list-nav" v-for="(item, index) in data" v-bind:key="index" >
+             <a class="pl-2" :class="path === item.url  ? 'is-active' : 'not-active' "  :href ="item.url">
                     <img class="list-img" src="@/assets/logo.png" alt="logo" />
                              <label class="label" v-bind:class="getClass()">
                       {{item.name}}
@@ -37,7 +37,7 @@
               <img class="list-img" src="@/assets/logo.png" alt="logo" />
                         <label class="label" v-bind:class="getClass()">
 
-                Logout
+                {{logout.name}}
               </label>
             </span>
           </a>
@@ -56,6 +56,8 @@ export default {
     data: Array,
     isLoggedIn: Boolean,
     isCollapseOpen: Boolean,
+    path : String,
+    logout : Object,
   },
    data() {
     return {
@@ -214,13 +216,17 @@ export default {
   padding-left: 2em;
 }
 
-.pl-2 a:hover  {
+.list-nav a:hover  {
   background: radial-gradient(black, transparent);
 }
 
 .logout-pl-2 {
   padding-left: 2em;
   width : calc(100% - 2em);
+}
+
+.is-active {
+  background: radial-gradient(black, transparent);
 }
 
 
